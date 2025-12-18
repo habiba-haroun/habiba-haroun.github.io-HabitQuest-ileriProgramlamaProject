@@ -267,13 +267,42 @@ button {
     margin-bottom: 10px;
 }
 
-/* Mobil uyumluluk */
-@media (max-width: 900px) {
-    main {
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 600px) {
+  body {
+    padding: 14px 10px;
+  }
 
-    #shop-section {
-        grid-column: 1 / 2;
-    }
+  .app-shell {
+    padding: 16px 14px 18px;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: 26px;
+    letter-spacing: 0.06em;
+  }
+
+  #player-panel {
+    align-items: flex-start;
+  }
+
+  #xp-bar {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  #new-task-section .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input,
+  select,
+  button {
+    width: 100%;
+  }
+
+  #task-list {
+    max-height: 320px;
+  }
 }
