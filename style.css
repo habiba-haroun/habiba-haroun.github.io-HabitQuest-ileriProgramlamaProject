@@ -1,0 +1,279 @@
+/* Sayfadaki tüm elemanlar için varsayılan boşlukları sıfırlar */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sayfanın genel görünümü ve arka planı */
+body {
+    min-height: 100vh;
+    padding: 32px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: radial-gradient(circle at top left, #1d4ed8 0, #020617 40%, #000 100%);
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #e5e7eb;
+}
+
+/* Uygulamanın tamamını saran ana kart */
+.app-shell {
+    width: 100%;
+    max-width: 1120px;
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 24px;
+    padding: 24px 28px 32px;
+    box-shadow: 0 32px 80px rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    backdrop-filter: blur(18px);
+}
+
+/* Üst kısım: başlık ve oyuncu paneli */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+/* Uygulama başlığı */
+h1 {
+    font-size: 32px;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+/* Oyuncu bilgilerini gösteren panel */
+#player-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+/* Oyuncunun level bilgisi */
+#player-level {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* XP barının dış çerçevesi */
+#xp-bar {
+    width: 200px;
+    height: 12px;
+    background: #020617;
+    border-radius: 999px;
+    padding: 2px;
+    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.7);
+}
+
+/* XP barının dolu kısmı */
+#xp-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #22c55e, #a3e635);
+    transition: width 0.25s ease-out;
+}
+
+/* XP yazısı */
+#xp-text {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Ana içerik alanı (iki sütunlu yapı) */
+main {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 18px;
+}
+
+/* Tüm bölümlerin ortak kart tasarımı */
+section {
+    background: rgba(15, 23, 42, 0.98);
+    border-radius: 18px;
+    padding: 16px 18px;
+    border: 1px solid rgba(51, 65, 85, 0.95);
+}
+
+/* Bölüm başlıkları */
+section h2 {
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+
+/* Input, select ve button için ortak stil */
+input,
+select,
+button {
+    height: 36px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    color: #e5e7eb;
+    border: 1px solid rgba(75, 85, 99, 0.9);
+    padding: 0 12px;
+}
+
+/* Yeni görev ekleme alanındaki elemanların hizalanması */
+#new-task-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Yeni görev alanındaki input ve butonların aynı satırda düzgün durması */
+#new-task-section .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Butonların görünümü */
+button {
+    cursor: pointer;
+    border: none;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    color: #f9fafb;
+}
+
+/* Görev listesi */
+#task-list {
+    list-style: none;
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+/* Tek bir görev kartı */
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: 14px;
+    margin-bottom: 8px;
+    background: radial-gradient(circle at top left, #0b1120, #020617);
+    border: 1px solid rgba(55, 65, 81, 0.9);
+}
+
+/* Tamamlanan görevler */
+.task-item.done {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+/* Kategori ve zorluk etiketleri */
+.badge {
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 15px;
+}
+
+/* Kategori renkleri */
+.badge.ders { color: #38bdf8; }
+.badge.proje { color: #a855f7; }
+.badge.sinav { color: #fb923c; }
+
+/* Zorluk renkleri */
+.badge.kolay { color: #22c55e; }
+.badge.orta { color: #facc15; }
+.badge.zor { color: #f97316; }
+
+/* İstatistik alanı */
+#stats-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Günlük streak yazısı */
+.streak-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Streak değeri */
+#streak-value {
+    font-weight: 700;
+    color: #22c55e;
+}
+
+/* Haftalık grafik alanı */
+#week-chart {
+    height: 140px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(31, 41, 55, 0.9);
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+/* Grafikteki her bir sütun */
+.chart-bar {
+    width: 26px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+/* Grafiğin dolu kısmı */
+.chart-bar-inner {
+    width: 100%;
+    max-height: 90px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #38bdf8, #1d4ed8);
+}
+
+/* Mağaza bölümü */
+#shop-section {
+    grid-column: 1 / 3;
+}
+
+/* Coin göstergesi */
+#coins-display {
+    display: inline-flex;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(234, 179, 8, 0.7);
+}
+
+/* Mağaza ürünleri */
+#shop-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Ürün kartı */
+.shop-item-card {
+    max-width: 260px;
+    padding: 12px;
+    border-radius: 16px;
+    background: radial-gradient(circle at top, #020617, #020617 60%);
+    border: 1px solid rgba(55, 65, 81, 0.95);
+}
+
+/* Ürün resmi */
+.shop-item-img {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 14px;
+    margin-bottom: 10px;
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 900px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    #shop-section {
+        grid-column: 1 / 2;
+    }
+}

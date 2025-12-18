@@ -2,128 +2,146 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habiba Haroun | İleri Programlama Projesi</title>
+    <!-- Sayfa başlığı (tarayıcı sekmesinde görünür) -->
+    <title>HabitQuest - Study Tracker</title>
 
-    <style>
-        :root {
-            --purple-main: #7c3aed;
-            --purple-soft: #ede9fe;
-            --purple-accent: #a855f7;
-        }
-
-        body {
-            margin: 0;
-            padding: 24px 18px 40px;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top, #ffffff, #f5f3ff, #ede9fe);
-            color: #111827;
-        }
-
-        .page {
-            max-width: 780px;
-            margin: 0 auto;
-        }
-
-    
-        .welcome {
-            font-size: 32px;    
-            font-weight: 800;   
-            color: #000000;     
-            margin-bottom: 20px;
-            margin-top: 10px;
-            letter-spacing: 0.05em;
-        }
-
-        .name {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .subtitle {
-            margin: 4px 0 22px;
-            font-size: 14px;
-            color: #4b5563;
-        }
-
-        .intro {
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 28px;
-        }
-
-        .project-section-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .project-line {
-            border-left: 4px solid var(--purple-main);
-            padding-left: 14px;
-            margin-bottom: 12px;
-        }
-
-        .project-name {
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .project-text {
-            font-size: 14px;
-            color: #374151;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 16px;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, var(--purple-main), var(--purple-accent));
-            color: white;
-            text-decoration: none;
-            border-radius: 999px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.35);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 26px rgba(124, 58, 237, 0.4);
-        }
-    </style>
+    <!-- Ana stil dosyası -->
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <main class="page">
 
-        
-        <div class="welcome">HOŞ GELDİNİZ</div>
+    <!-- Uygulamanın ana kapsayıcısı -->
+    <div class="app-shell">
 
-        <h1 class="name">Habiba Haroun</h1>
-        <p class="subtitle">GitHub Pages Ana Sayfası</p>
+        <!-- Üst kısım: Başlık + oyuncu bilgileri -->
+        <header>
 
-        <p class="intro">
-            Bu sayfa, <strong>İleri Programlama</strong> dersi için yapacağım proje
-            için hazırlanmıştır. Projemi tamamladığımda burada yayınlayacağım.
-        </p>
-
-        <div class="project-section-title">Proje</div>
-
-        <div class="project-line">
-            <div class="project-name">İleri Programlama Projesi</div>
-            <div class="project-text">
-                Projenin detaylarını görmek isterseniz aşağıdaki butona tıklayabilirsiniz.
+            <!-- Sol taraf: Uygulama adı ve alt başlık -->
+            <div>
+                <h1>HabitQuest</h1>
+                <!-- Kullanıcıyı motive eden kısa açıklama -->
+                <p class="subtitle">Görevlerini yap, ödüller seni bekliyor</p>
             </div>
-        </div>
 
-        <a class="button" href="#" target="_blank">Projeyi Görüntüle</a>
+            <!-- Sağ taraf: Seviye ve XP bilgileri -->
+            <div id="player-panel">
+                <!-- Oyuncunun mevcut seviyesi -->
+                <span id="player-level">Level: 1</span>
 
-    </main>
+                <!-- XP bar (ilerleme çubuğu) -->
+                <div id="xp-bar">
+                    <div id="xp-fill"></div>
+                </div>
+
+                <!-- XP metni -->
+                <span id="xp-text">0 / 100 XP</span>
+            </div>
+        </header>
+
+        <!-- Ana içerik alanı -->
+        <main>
+
+            <!-- Yeni görev ekleme bölümü -->
+            <section id="new-task-section">
+                <h2>Yeni Görev</h2>
+
+                <!-- Görev başlığı girişi -->
+                <div class="form-row">
+                    <input id="task-title" type="text" placeholder="Görev başlığı">
+                </div>
+
+                <!-- Kategori, zorluk ve ekle butonu -->
+                <div class="form-row">
+
+                    <!-- Görev kategorisi -->
+                    <select id="task-category">
+                        <option value="ders">Ders</option>
+                        <option value="proje">Proje</option>
+                        <option value="sinav">Sınav</option>
+                    </select>
+
+                    <!-- Görev zorluk seviyesi -->
+                    <select id="task-difficulty">
+                        <option value="kolay">Kolay (10 XP)</option>
+                        <option value="orta">Orta (20 XP)</option>
+                        <option value="zor">Zor (30 XP)</option>
+                    </select>
+
+                    <!-- Görevi ekleme butonu -->
+                    <button id="add-task-btn">Ekle</button>
+                </div>
+            </section>
+
+            <!-- Filtreleme ve sıralama bölümü -->
+            <section id="controls">
+                <h2>Filtre / Sırala</h2>
+
+                <div class="filter-row">
+
+                    <!-- Kategori filtresi -->
+                    <select id="filter-category">
+                        <option value="hepsi">Tümü</option>
+                        <option value="ders">Ders</option>
+                        <option value="proje">Proje</option>
+                        <option value="sinav">Sınav</option>
+                    </select>
+
+                    <!-- Durum filtresi -->
+                    <select id="filter-status">
+                        <option value="hepsi">Hepsi</option>
+                        <option value="aktif">Aktif</option>
+                        <option value="bitti">Bitti</option>
+                    </select>
+
+                    <!-- Sıralama seçenekleri -->
+                    <select id="sort-mode">
+                        <option value="tarih-yeni">Tarih (Yeni → Eski)</option>
+                        <option value="tarih-eski">Tarih (Eski → Yeni)</option>
+                        <option value="zorluk">Zorluk</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Görev listesi -->
+            <section id="task-section">
+                <h2>Görevler</h2>
+                <!-- JavaScript ile doldurulacak görev listesi -->
+                <ul id="task-list"></ul>
+            </section>
+
+            <!-- İstatistikler ve streak -->
+            <section id="stats-section">
+                <h2>İstatistikler</h2>
+
+                <!-- Günlük streak bilgisi -->
+                <div id="streak-box">
+                    <span>Günlük Streak: </span>
+                    <span id="streak-value">0</span> gün
+                </div>
+
+                <!-- Son 7 gün için grafik alanı -->
+                <div id="week-chart">
+                    <!-- Sütunlar JavaScript ile oluşturulur -->
+                </div>
+            </section>
+
+            <!-- Mağaza bölümü (Level 4’ten sonra açılır) -->
+            <section id="shop-section">
+                <h2>Mağaza</h2>
+
+                <!-- Kullanıcının coin miktarı -->
+                <div id="coins-display">Coin: 0</div>
+
+                <!-- Satın alınabilir ürünler -->
+                <div id="shop-items">
+                    <!-- JavaScript ile doldurulacak -->
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <!-- Ana JavaScript dosyası -->
+    <script src="app.js"></script>
 </body>
 </html>
